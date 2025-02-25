@@ -1,120 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>monfmalvaro's website</title>
-        <meta charset="UTF-8">
-        <meta name="description" content="This website is an example to practice.">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./stylesheets/segunda_estilo.css" />
-        <link href="https://fonts.googleapis.com/css?family=Libertine" rel="stylesheet">
-    </head>
-    
-    <body>
-        <div class="header">
-            <div class="title-navbar-wrapper">
-                <div class="header-title">
-                    <h1>Álvaro Monforte Marín</h1>
-                    <p><b>#Physicist</b> <b>#DataScientist</b></p>
-                </div>
-        
-                <div class="navbar">
-                    <a href="#home" class="active">Home</a>
-                    <a href="./monfortemarinalvaro_cv_120623.pdf">CV</a>
-                    <a href="#projects">Projects</a>
-                    <a href="mailto:monfmalvaro@gmail.com" class="enlace-personalizado">Gmail</a>
-                </div>
+
+<head>
+    <title>Álvaro Monforte Marín | Physicist & Data Scientist</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Portfolio of Álvaro Monforte Marín, Physicist and Data Scientist specializing in Machine Learning and Materials Science.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./stylesheets/segunda_estilo.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <script>
+        // Redirigir al seleccionar una opción del desplegable
+        function redirectToProject(select) {
+            const url = select.value;
+            if (url) {
+                window.open(url, '_blank');
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <main class="row">
+        <header class="header">
+            <div class="header-title">
+                <h1>Álvaro Monforte Marín</h1>
+                <p><strong>Physicist</strong> | <strong>Data Scientist</strong> | <strong>Machine Learning Engineer</strong></p>
             </div>
-        
+            <nav class="navbar" role="navigation">
+                <a href="#home" class="active">Home</a>
+                <a href="./monfortemarinalvaro_cv_120623.pdf" target="_blank" rel="noopener">CV</a>
+                <a href="#projects">Projects</a>
+                <a href="mailto:monfmalvaro@gmail.com" class="enlace-personalizado">Contact</a>
+            </nav>
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/monfortemarinalvaro/">
-                    <img src="./images/iconmonstr-linkedin-5.svg" alt="linkedin_icon">
+                <a href="https://www.linkedin.com/in/monfortemarinalvaro/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                    <img src="./images/iconmonstr-linkedin-5.svg" alt="LinkedIn Profile">
                 </a>
-                <a href="https://github.com/varo6678">
-                    <img src="./images/iconmonstr-github-5.svg" alt="github_icon">
+                <a href="https://github.com/varo6678" target="_blank" rel="noopener" aria-label="GitHub">
+                    <img src="./images/iconmonstr-github-5.svg" alt="GitHub Profile">
                 </a>
-            </div> 
-        </div>
-        
-
-        
-
-        
-        <div class="row">
-            
-            <div class="side_left">
-                <h2>About Me</h2>
-                <img src="./images/1657135627217.jpeg" alt="Image of Alvaro Monforte">
-                <!-- <h5>Image of Alvaro Monforte</h5> -->
-                <p class="justify-text">
-                    I am Álvaro, a native of the Canary Islands, specifically 
-                    from the island of Gran Canaria. My passion is learning, 
-                    and my second passion is applying what I have learned. Currently, 
-                    I am a physicist and consider myself a data scientist.<br><br>
-                    BSc in Physics at the ULL. 
-                    Pursuing a MSc. in Data Science at UOC. <br><br>
-                    Strong preference for Python.
-                    I am focused on ML using TensorFlow. <br><br>
-                    I will be presenting my Final Master's Project on July 10th, 2023.
-            </div> 
-            
-            <div class="main" id="projects">
-                <!-- <h2>Last project</h2>
-                <h5>Initiation to the theoretical study of materials: DFT for C, Si, Ge and Sn. <br>Jul 19, 2022</h5>
-                <img src="./Screenshot from 2022-05-17 14-43-12.png" alt="diamond" style="max-width: 100%; height: auto;"/>
-                <p>This is my final degree work that allowed me to finally obtain my degree in physics from the university of laguna in july.</p>
-                 -->
-
-                 <h2 id="projects">Projects: a brief description</h2>
-
-                 <div class="project">
-                     <div style="flex-grow: 1;">
-                         <h3>Predict molecular properties using the Graph Neural Network framework: Infer the Scalar Coupling Constant from a Kaggle competition dataset</h3>
-                         <p class="justify-text"><strong>Graph Neural Network for Predicting Molecular Properties:</strong><br> 
-                         Developed a Graph Neural Network (GNN) model to analyze the scalar coupling constant (SCC) in molecular interactions. Utilized graph theory and adjacency matrices to represent molecular structures. Implemented the model using TensorFlow, Google Cloud Platform, and the NVIDIA Tesla P100 GPU to handle large datasets and improve model accuracy.</p>
-                     </div>
-                     <!-- <a href="https://link_to_your_project_or_paper">
-                         <img src="./images/icono_circulo.svg" alt="icon" style="height: 24px;">
-                     </a> -->
-                 </div>
-                 
-                 <div class="project_right">
-                     <div style="flex-grow: 1;">
-                         <h3>Initiation to the theoretical study of materials: DFT for C, Si, Ge and Sn  <a href="https://riull.ull.es/xmlui/handle/915/29103?locale-attribute=en">
-                          <img src="./images/icono_circulo.svg" alt="linkedin_icon" style="height: 24px;">
-                          </a></h3>
-                         <p class="justify-text"><strong>Theoretical Study of Materials using Density Functional Theory (DFT):</strong><br> 
-                         Investigated the properties of Carbon (C), Silicon (Si), Germanium (Ge), and Tin (Sn) in cubic and hexagonal diamond structures. Applied Vienna ab initio Simulation Package (VASP) and Birch-Murnaghan equations of state to compute electronic properties and analyze the relationship between volume and energy under compression. Compared results with published calculations, contributing to the understanding of different diamond structures and potential applications in material discovery.</p>
-                     </div>
-                 </div>
             </div>
+        </header>
 
-            <!-- <div class="side_right">
-                <a href="https://www.linkedin.com/in/monfortemarinalvaro/">
-                  <img src="./images/iconmonstr-linkedin-5.svg" alt="linkedin_icon">
-                </a>
-                <a href="https://github.com/varo6678">
-                  <img src="./images/iconmonstr-github-5.svg" alt="github_icon">
-                </a>
-            </div>  -->
-            
-        </div>
-        
-        <div class="footer">
-            
+        <section class="side_left">
+            <h2>About Me</h2>
+            <img src="./images/1736950159463.jpeg" alt="Álvaro Monforte Marín portrait">
+            <p class="justify-text">
+                I’m Álvaro, from Gran Canaria, Canary Islands. Passionate about learning and applying knowledge, I’m a physicist and data scientist with expertise in machine learning and materials science.<br><br>
+                <strong>Education:</strong><br>
+                - BSc in Physics, Universidad de La Laguna (ULL)<br>
+                - MSc in Data Science, Universitat Oberta de Catalunya (UOC), 2023<br><br>
+                <strong>Skills:</strong><br>
+                - Python (TensorFlow, Pandas, NumPy)<br>
+                - Machine Learning & Graph Neural Networks<br>
+                - Computational Physics (DFT, VASP)<br><br>
+                Currently exploring advanced ML applications and material discovery.
+            </p>
+        </section>
+
+        <section class="main" id="projects">
+            <h2>Projects</h2>
+            <div class="project-dropdown">
+                <select onchange="redirectToProject(this)">
+                    <option value="">Select a Project</option>
+                    <option value="https://varo6678.github.io/chatbot">Chatbot</option>
+                    <option value="https://varo6678.github.io/predicting-tourism">Predicting Tourism</option>
+                    <option value="https://varo6678.github.io/ts-applied-to-retail">TS Applied to Retail</option>
+                    <option value="https://varo6678.github.io/predicting-molecular-properties">Predicting Molecular Properties with Graph Neural Networks</option>
+                    <option value="https://varo6678.github.io/theoretical-study-dft">Theoretical Study of Materials with DFT</option>
+                </select>
+            </div>
+        </section>
+
+
+        <footer class="footer">
             <div class="footer_left">
-                <p>Bilbao, Biscay. Basque Country<br>Spain.</p>
+                <p>Bilbao, Biscay, Basque Country, Spain</p>
                 <p>+34 696-944-160</p>
-                <p>
-                    <a 
-                    href="mailto:monfmalvaro@gmail.com" 
-                    class="enlace-personalizado"
-                    >monfmalvaro@gmail.com
-                    </a>
-                </p>
+                <p><a href="mailto:monfmalvaro@gmail.com" class="enlace-personalizado">monfmalvaro@gmail.com</a></p>
             </div>
-        </div>
+            <div class="social-links-footer">
+                <a href="https://www.linkedin.com/in/monfortemarinalvaro/" target="_blank" rel="noopener">
+                    <img src="./images/iconmonstr-linkedin-5.svg" alt="LinkedIn Profile">
+                </a>
+                <a href="https://github.com/varo6678" target="_blank" rel="noopener">
+                    <img src="./images/iconmonstr-github-5.svg" alt="GitHub Profile">
+                </a>
+                <a href="https://wa.me/34696944160" target="_blank" rel="noopener" aria-label="WhatsApp">
+                    <img src="./images/icons8-whatsapp.svg" alt="WhatsApp">
+                </a>
+                <a href="https://t.me/tuUsuarioTelegram" target="_blank" rel="noopener" aria-label="Telegram">
+                    <img src="./images/icons8-telegram.svg" alt="Telegram">
+                </a>
+            </div>
+        </footer>
+    </main>
 
-        
-    
-    </body>
+</body>
+
 </html>
