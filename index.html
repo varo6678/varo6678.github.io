@@ -9,13 +9,50 @@
     <link rel="stylesheet" href="./stylesheets/segunda_estilo.css" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <script>
-        // Redirigir al seleccionar una opción del desplegable
+        // Redirect when selecting a project option
         function redirectToProject(select) {
             const url = select.value;
             if (url) {
                 window.open(url, '_blank');
             }
         }
+
+        // Language switcher functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const languageToggle = document.getElementById('language-toggle');
+            const englishElements = document.querySelectorAll('.en');
+            const spanishElements = document.querySelectorAll('.es');
+            
+            // Set default language
+            let currentLang = 'en';
+            showLanguage(currentLang);
+            
+            // Handle language switch
+            languageToggle.addEventListener('change', function() {
+                currentLang = this.checked ? 'es' : 'en';
+                showLanguage(currentLang);
+                // Store preference in localStorage
+                localStorage.setItem('preferredLanguage', currentLang);
+            });
+            
+            // Load saved preference
+            const savedLang = localStorage.getItem('preferredLanguage');
+            if (savedLang) {
+                currentLang = savedLang;
+                languageToggle.checked = (currentLang === 'es');
+                showLanguage(currentLang);
+            }
+            
+            function showLanguage(lang) {
+                if (lang === 'en') {
+                    englishElements.forEach(el => el.style.display = 'block');
+                    spanishElements.forEach(el => el.style.display = 'none');
+                } else {
+                    englishElements.forEach(el => el.style.display = 'none');
+                    spanishElements.forEach(el => el.style.display = 'block');
+                }
+            }
+        });
     </script>
 </head>
 
@@ -28,10 +65,27 @@
                 <p><strong>Physicist</strong> | <strong>Data Scientist</strong> | <strong>Machine Learning Engineer</strong></p>
             </div>
             <nav class="navbar" role="navigation">
-                <a href="#home" class="active">Home</a>
+                <a href="#home" class="active">
+                    <span class="en">Home</span>
+                    <span class="es">Inicio</span>
+                </a>
                 <a href="./monfortemarinalvaro_cv_120623.pdf" target="_blank" rel="noopener">CV</a>
-                <a href="#projects">Projects</a>
-                <a href="mailto:monfmalvaro@gmail.com" class="enlace-personalizado">Contact</a>
+                <a href="#projects">
+                    <span class="en">Projects</span>
+                    <span class="es">Proyectos</span>
+                </a>
+                <a href="mailto:monfmalvaro@gmail.com" class="enlace-personalizado">
+                    <span class="en">Contact</span>
+                    <span class="es">Contacto</span>
+                </a>
+                <div class="language-switch">
+                    <label class="switch">
+                        <input type="checkbox" id="language-toggle">
+                        <span class="slider round"></span>
+                        <span class="lang-label lang-en">EN</span>
+                        <span class="lang-label lang-es">ES</span>
+                    </label>
+                </div>
             </nav>
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/monfortemarinalvaro/" target="_blank" rel="noopener" aria-label="LinkedIn">
@@ -44,35 +98,92 @@
         </header>
 
         <section class="side_left">
-            <h2>About Me</h2>
+            <h2>
+                <span class="en">About Me</span>
+                <span class="es">Sobre Mí</span>
+            </h2>
             <img src="./images/1736950159463.jpeg" alt="Álvaro Monforte Marín portrait">
-            <p class="justify-text">
-                I’m Álvaro, from Gran Canaria, Canary Islands. Passionate about learning and applying knowledge, I’m a physicist and data scientist with expertise in machine learning and materials science.<br><br>
-                <strong>Education:</strong><br>
-                - BSc in Physics, Universidad de La Laguna (ULL)<br>
-                - MSc in Data Science, Universitat Oberta de Catalunya (UOC), 2023<br><br>
-                <strong>Skills:</strong><br>
-                - Python (TensorFlow, Pandas, NumPy)<br>
-                - Machine Learning & Graph Neural Networks<br>
-                - Computational Physics (DFT, VASP)<br><br>
-                Currently exploring advanced ML applications and material discovery.
-            </p>
+            
+            <!-- English content -->
+            <div class="en">
+                <p class="justify-text">
+                    I'm Álvaro, from Gran Canaria, Canary Islands. Passionate about learning and applying knowledge, I'm a physicist and data scientist with expertise in machine learning and materials science.<br><br>
+                    <strong>Education:</strong><br>
+                    - BSc in Physics, Universidad de La Laguna (ULL)<br>
+                    - MSc in Data Science, Universitat Oberta de Catalunya (UOC), 2023<br><br>
+                    <strong>Skills:</strong><br>
+                    - Python (TensorFlow, Pandas, NumPy)<br>
+                    - Machine Learning & Graph Neural Networks<br>
+                    - Computational Physics (DFT, VASP)<br><br>
+                    Currently exploring advanced ML applications and material discovery.
+                </p>
+            </div>
+            
+            <!-- Spanish content -->
+            <div class="es">
+                <p class="justify-text">
+                    Soy Álvaro, de Gran Canaria, Islas Canarias. Apasionado por aprender y aplicar conocimientos, soy físico y científico de datos con experiencia en aprendizaje automático y ciencia de materiales.<br><br>
+                    <strong>Educación:</strong><br>
+                    - Grado en Física, Universidad de La Laguna (ULL)<br>
+                    - Máster en Ciencia de Datos, Universitat Oberta de Catalunya (UOC), 2023<br><br>
+                    <strong>Habilidades:</strong><br>
+                    - Python (TensorFlow, Pandas, NumPy)<br>
+                    - Aprendizaje Automático y Redes Neuronales de Grafos<br>
+                    - Física Computacional (DFT, VASP)<br><br>
+                    Actualmente explorando aplicaciones avanzadas de ML y descubrimiento de materiales.
+                </p>
+            </div>
         </section>
 
         <section class="main" id="projects">
-            <h2>Projects</h2>
+            <h2>
+                <span class="en">Projects</span>
+                <span class="es">Proyectos</span>
+            </h2>
             <div class="project-dropdown">
                 <select onchange="redirectToProject(this)">
-                    <option value="">Select a Project</option>
+                    <option value="" class="en">Select a Project</option>
+                    <option value="" class="es">Selecciona un Proyecto</option>
                     <option value="https://varo6678.github.io/chatbot">Chatbot</option>
-                    <option value="https://varo6678.github.io/predicting-tourism">Predicting Tourism</option>
-                    <option value="https://varo6678.github.io/ts-applied-to-retail">TS Applied to Retail</option>
-                    <option value="https://varo6678.github.io/predicting-molecular-properties">Predicting Molecular Properties with Graph Neural Networks</option>
-                    <option value="https://varo6678.github.io/theoretical-study-dft">Theoretical Study of Materials with DFT</option>
+                    <option value="https://varo6678.github.io/predicting-tourism">
+                        <span class="en">Predicting Tourism</span>
+                        <span class="es">Predicción de Turismo</span>
+                    </option>
+                    <option value="https://varo6678.github.io/ts-applied-to-retail">
+                        <span class="en">TS Applied to Retail</span>
+                        <span class="es">Series Temporales Aplicadas al Comercio</span>
+                    </option>
+                    <option value="https://varo6678.github.io/predicting-molecular-properties">
+                        <span class="en">Predicting Molecular Properties with Graph Neural Networks</span>
+                        <span class="es">Predicción de Propiedades Moleculares con Redes Neuronales de Grafos</span>
+                    </option>
+                    <option value="https://varo6678.github.io/theoretical-study-dft">
+                        <span class="en">Theoretical Study of Materials with DFT</span>
+                        <span class="es">Estudio Teórico de Materiales con DFT</span>
+                    </option>
                 </select>
             </div>
         </section>
 
+        <!-- New Technologies Section -->
+        <section class="technologies">
+            <h2>
+                <span class="en">Technologies used in projects</span>
+                <span class="es">Tecnologías trabajadas en proyectos</span>
+            </h2>
+            <div class="tech-icons">
+                <img src="./images/icons/Python.svg" alt="Python" title="Python">
+                <img src="./images/icons/TensorFlow.svg" alt="TensorFlow" title="TensorFlow">
+                <img src="./images/icons/PyTorch.svg" alt="Pandas" title="Pandas">
+                <img src="./images/icons/Google Cloud.svg" alt="NumPy" title="NumPy">
+                <img src="./images/icons/Azure.svg" alt="PyTorch" title="PyTorch">
+                <img src="./images/icons/Kubernetes.svg" alt="Scikit-learn" title="Scikit-learn">
+                <img src="./images/icons/Docker.svg" alt="Jupyter" title="Jupyter">
+                <img src="./images/icons/PostgresSQL.svg" alt="Git" title="Git">
+                <img src="./images/icons/Linux.svg" alt="Git" title="Git">
+                <img src="./images/icons/LaTeX.svg" alt="Git" title="Git">
+            </div>
+        </section>
 
         <footer class="footer">
             <div class="footer_left">
