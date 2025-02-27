@@ -9,6 +9,65 @@ body {
   line-height: 1.6;
   width: 100%;
   box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 🌙 Dark Mode Styles */
+body.dark-mode {
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+}
+
+body.dark-mode .header {
+  background: rgba(50, 50, 50, 0.7);
+  color: #f0f0f0;
+}
+
+body.dark-mode .header-title h1 {
+  color: #f0f0f0;
+}
+
+body.dark-mode .header-title p {
+  color: #ccc;
+}
+
+body.dark-mode .navbar a {
+  color: #f0f0f0;
+}
+
+body.dark-mode .side_left,
+body.dark-mode .main,
+body.dark-mode .technologies {
+  background-color: #2a2a2a;
+  color: #f0f0f0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .project-dropdown select,
+body.dark-mode .resource-dropdown select {
+  background-color: #333;
+  color: #f0f0f0;
+  border-color: #555;
+}
+
+body.dark-mode .project-dropdown select:hover,
+body.dark-mode .project-dropdown select:focus,
+body.dark-mode .resource-dropdown select:hover,
+body.dark-mode .resource-dropdown select:focus {
+  border-color: #E74C3C;
+}
+
+body.dark-mode .tech-icons img {
+  filter: brightness(0.8) contrast(1.2) grayscale(20%);
+}
+
+body.dark-mode .tech-icons img:hover {
+  filter: brightness(1) contrast(1) grayscale(0%);
+}
+
+body.dark-mode .social-links img,
+body.dark-mode .social-links-footer img {
+  filter: invert(1);
 }
 
 /* 🎨 Compact and elegant header */
@@ -29,6 +88,7 @@ body {
   width: 100%;
   margin: 0 auto;
   border-radius: 12px;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .header-title h1 {
@@ -36,6 +96,7 @@ body {
   margin: 0;
   font-weight: 700;
   color: #333;
+  transition: color 0.3s ease;
 }
 
 .header-title p {
@@ -43,6 +104,7 @@ body {
   margin: 1px 0 0;
   font-weight: 300;
   color: #666;
+  transition: color 0.3s ease;
 }
 
 .navbar {
@@ -75,9 +137,23 @@ body {
   color: #fff;
 }
 
-/* Language toggle switch styling */
-.language-switch {
-  margin-left: 5px;
+/* Toggle container for language and dark mode switches */
+.toggle-container {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.toggle-item {
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* Language and Dark Mode toggle switch styling */
+.language-switch,
+.dark-mode-switch {
+  margin-left: 2px;
   display: flex;
   align-items: center;
 }
@@ -137,7 +213,8 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-.lang-label {
+.lang-label,
+.mode-label {
   position: absolute;
   font-size: 0.6rem;
   font-weight: bold;
@@ -145,12 +222,14 @@ input:checked + .slider:before {
   z-index: 1;
 }
 
-.lang-en {
+.lang-en,
+.mode-light {
   left: 6px;
   top: 5px;
 }
 
-.lang-es {
+.lang-es,
+.mode-dark {
   right: 6px;
   top: 5px;
 }
@@ -185,6 +264,7 @@ img {
   height: auto;
   border-radius: 8px;
   object-fit: cover;
+  transition: filter 0.3s ease;
 }
 
 .side_left img {
@@ -217,6 +297,7 @@ img {
   padding: 25px;
   background-color: #fff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .side_left {
@@ -229,12 +310,26 @@ img {
   position: relative;
 }
 
-/* 🎨 Project dropdown styling */
-.project-dropdown {
+/* Content columns for projects and resources */
+.content-columns {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+}
+
+.half-width {
+  flex: 1;
+  min-width: 0; /* Necessary for correct flex behavior */
+}
+
+/* 🎨 Project and resource dropdown styling */
+.project-dropdown,
+.resource-dropdown {
   margin-top: 20px;
 }
 
-.project-dropdown select {
+.project-dropdown select,
+.resource-dropdown select {
   width: 100%;
   padding: 12px;
   font-size: 1rem;
@@ -245,11 +340,13 @@ img {
   color: #333;
   cursor: pointer;
   outline: none;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
 .project-dropdown select:hover,
-.project-dropdown select:focus {
+.project-dropdown select:focus,
+.resource-dropdown select:hover,
+.resource-dropdown select:focus {
   border-color: #E74C3C;
 }
 
@@ -262,6 +359,7 @@ img {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   text-align: center;
   width: 100%;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .technologies h2 {
@@ -279,7 +377,7 @@ img {
 .tech-icons img {
   width: 60px;
   height: 60px;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, filter 0.3s ease;
   filter: grayscale(20%);
 }
 
@@ -326,6 +424,16 @@ img {
 }
 
 /* 🎯 Responsive Design */
+@media (max-width: 992px) {
+  .content-columns {
+    flex-direction: column;
+  }
+
+  .half-width {
+    width: 100%;
+  }
+}
+
 @media (max-width: 768px) {
   .header {
     flex-direction: column;
@@ -339,6 +447,10 @@ img {
     justify-content: center;
     gap: 6px;
     margin: 5px 0;
+  }
+
+  .toggle-container {
+    margin-top: 8px;
   }
 
   .row {
@@ -392,12 +504,14 @@ img {
     padding: 15px;
   }
 
-  .project-dropdown select {
+  .project-dropdown select,
+  .resource-dropdown select {
     font-size: 0.9rem;
     padding: 10px;
   }
 
-  .language-switch {
-    margin-top: 5px;
+  .toggle-container {
+    flex-direction: column;
+    gap: 5px;
   }
 }

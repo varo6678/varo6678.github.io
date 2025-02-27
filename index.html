@@ -17,8 +17,16 @@
             }
         }
 
-        // Language switcher functionality
+        // Redirect when selecting a resource option
+        function redirectToResource(select) {
+            const url = select.value;
+            if (url) {
+                window.open(url, '_blank');
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
+            // Language switcher functionality
             const languageToggle = document.getElementById('language-toggle');
             const englishElements = document.querySelectorAll('.en');
             const spanishElements = document.querySelectorAll('.es');
@@ -35,7 +43,7 @@
                 localStorage.setItem('preferredLanguage', currentLang);
             });
             
-            // Load saved preference
+            // Load saved language preference
             const savedLang = localStorage.getItem('preferredLanguage');
             if (savedLang) {
                 currentLang = savedLang;
@@ -51,6 +59,28 @@
                     englishElements.forEach(el => el.style.display = 'none');
                     spanishElements.forEach(el => el.style.display = 'block');
                 }
+            }
+
+            // Dark mode functionality
+            const darkModeToggle = document.getElementById('dark-mode-toggle');
+            const body = document.body;
+            
+            // Handle dark mode switch
+            darkModeToggle.addEventListener('change', function() {
+                if (this.checked) {
+                    body.classList.add('dark-mode');
+                    localStorage.setItem('darkMode', 'enabled');
+                } else {
+                    body.classList.remove('dark-mode');
+                    localStorage.setItem('darkMode', 'disabled');
+                }
+            });
+            
+            // Load saved dark mode preference
+            const savedDarkMode = localStorage.getItem('darkMode');
+            if (savedDarkMode === 'enabled') {
+                body.classList.add('dark-mode');
+                darkModeToggle.checked = true;
             }
         });
     </script>
@@ -74,17 +104,34 @@
                     <span class="en">Projects</span>
                     <span class="es">Proyectos</span>
                 </a>
+                <a href="#resources">
+                    <span class="en">Resources</span>
+                    <span class="es">Recursos</span>
+                </a>
                 <a href="mailto:monfmalvaro@gmail.com" class="enlace-personalizado">
                     <span class="en">Contact</span>
                     <span class="es">Contacto</span>
                 </a>
-                <div class="language-switch">
-                    <label class="switch">
-                        <input type="checkbox" id="language-toggle">
-                        <span class="slider round"></span>
-                        <span class="lang-label lang-en">EN</span>
-                        <span class="lang-label lang-es">ES</span>
-                    </label>
+                <div class="toggle-container">
+                    <!-- Language Toggle -->
+                    <div class="language-switch toggle-item">
+                        <label class="switch">
+                            <input type="checkbox" id="language-toggle">
+                            <span class="slider round"></span>
+                            <span class="lang-label lang-en">EN</span>
+                            <span class="lang-label lang-es">ES</span>
+                        </label>
+                    </div>
+                    
+                    <!-- Dark Mode Toggle -->
+                    <div class="dark-mode-switch toggle-item">
+                        <label class="switch">
+                            <input type="checkbox" id="dark-mode-toggle">
+                            <span class="slider round"></span>
+                            <span class="mode-label mode-light">☀️</span>
+                            <span class="mode-label mode-dark">🌙</span>
+                        </label>
+                    </div>
                 </div>
             </nav>
             <div class="social-links">
