@@ -729,3 +729,153 @@ img {
     font-size: 0.8rem;
   }
 }
+
+/* Estilos para el menú hamburguesa */
+
+/* Estilos base para la navegación */
+.nav-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Botón de hamburguesa - oculto por defecto en escritorio */
+.hamburger-button {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 1001;
+}
+
+.hamburger-line {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  background-color: #333;
+  transition: all 0.3s ease-in-out;
+  border-radius: 3px;
+}
+
+body.dark-mode .hamburger-line {
+  background-color: #f0f0f0;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
+  /* Contenedor del header modificado */
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    position: relative;
+    width: calc(100% - 20px);
+  }
+  
+  /* Ocultar nav-container por defecto */
+  .nav-container {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #ECF0F1;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 0;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  body.dark-mode .nav-container {
+    background-color: #2a2a2a;
+  }
+  
+  /* Cuando el menú está abierto */
+  .nav-container.active {
+    display: flex;
+  }
+  
+  /* Mostrar el botón hamburguesa */
+  .hamburger-button {
+    display: block;
+  }
+  
+  /* Ajustes para el navbar dentro */
+  .navbar {
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+  }
+  
+  .navbar a {
+    width: 80%;
+    text-align: center;
+    padding: 8px 10px;
+    margin: 0 auto;
+  }
+  
+  /* Ajustes para los toggles */
+  .toggle-container {
+    margin: 12px 0;
+  }
+  
+  /* Ajustes para los social links */
+  .social-links {
+    margin: 10px 0;
+  }
+  
+  /* Modificar header title */
+  .header-title {
+    flex: 1;
+  }
+  
+  .header-title h1 {
+    font-size: 1rem;
+    margin: 0;
+  }
+  
+  .header-title p {
+    font-size: 0.65rem;
+  }
+  
+  /* Animación para el botón hamburguesa */
+  .hamburger-button.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger-button.active .hamburger-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  
+  .hamburger-button.active .hamburger-line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
+/* Ajustes para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .navbar a {
+    width: 90%;
+    padding: 7px;
+    font-size: 0.75rem;
+  }
+  
+  .hamburger-line {
+    width: 22px;
+    height: 2px;
+    margin: 4px auto;
+  }
+  
+  .header-title h1 {
+    font-size: 0.9rem;
+  }
+  
+  .header-title p {
+    font-size: 0.6rem;
+  }
+}

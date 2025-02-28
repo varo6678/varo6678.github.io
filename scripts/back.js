@@ -548,3 +548,49 @@ function showLanguage(lang) {
         spanishElements.forEach(el => el.style.display = 'block');
     }
 }
+
+// Código JavaScript para el menú hamburguesa
+document.addEventListener('DOMContentLoaded', function() {
+    // Configuración del menú hamburguesa
+    const menuToggle = document.getElementById('menu-toggle');
+    const navContainer = document.getElementById('nav-container');
+    
+    if(menuToggle && navContainer) {
+        // Inicializar el menú
+        menuToggle.addEventListener('click', function() {
+            menuToggle.classList.toggle('active');
+            navContainer.classList.toggle('active');
+        });
+        
+        // Cerrar el menú cuando se hace clic en un enlace
+        const navLinks = navContainer.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                menuToggle.classList.remove('active');
+                navContainer.classList.remove('active');
+            });
+        });
+        
+        // Cerrar el menú si se hace clic fuera
+        document.addEventListener('click', function(event) {
+            if (!navContainer.contains(event.target) && !menuToggle.contains(event.target)) {
+                menuToggle.classList.remove('active');
+                navContainer.classList.remove('active');
+            }
+        });
+    }
+    
+    // Aquí se mantiene el código original para language, dark mode, etc.
+    // (El código existente debe mantenerse)
+});
+
+// Función para detectar cambio de tamaño y restablecer el menú
+window.addEventListener('resize', function() {
+    const menuToggle = document.getElementById('menu-toggle');
+    const navContainer = document.getElementById('nav-container');
+    
+    if (window.innerWidth > 768 && navContainer) {
+        menuToggle.classList.remove('active');
+        navContainer.classList.remove('active');
+    }
+});
