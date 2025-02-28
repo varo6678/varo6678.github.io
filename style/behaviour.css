@@ -479,7 +479,7 @@ img {
   }
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .header {
     flex-direction: column;
     height: auto;
@@ -520,9 +520,9 @@ img {
     width: 50px;
     height: 50px;
   }
-}
+} */
 
-@media (max-width: 480px) {
+/* @media (max-width: 480px) {
   .header-title h1 {
     font-size: 0.8rem;
   }
@@ -559,5 +559,173 @@ img {
   .toggle-container {
     flex-direction: column;
     gap: 5px;
+  }
+} */
+
+/* Ajustes generales para mejorar el espaciado en dispositivos móviles */
+@media (max-width: 768px) {
+  /* Ajuste del padding general */
+  .row {
+    padding: 15px 10px;
+    gap: 20px;
+  }
+  
+  /* Ajustes para el header */
+  .header {
+    height: auto;
+    padding: 10px;
+    position: relative; /* Cambiamos de sticky a relative en móvil */
+    margin-bottom: 15px;
+  }
+  
+  .header-title h1 {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+  
+  .header-title p {
+    font-size: 0.7rem;
+    text-align: center;
+  }
+  
+  /* Mejor espaciado en la navegación */
+  .navbar {
+    justify-content: center;
+    width: 100%;
+    margin: 8px 0;
+  }
+  
+  .navbar a {
+    padding: 5px 10px;
+    font-size: 0.75rem;
+  }
+  
+  /* Ajuste del contenido de secciones */
+  .side_left, 
+  .content-box {
+    padding: 15px;
+  }
+  
+  /* Mejorar altura de la imagen de perfil */
+  .side_left img {
+    height: auto;
+    max-height: 250px;
+    object-fit: cover;
+  }
+  
+  /* Tamaño de los iconos de tecnología */
+  .tech-icons {
+    gap: 15px;
+  }
+  
+  .tech-icons img {
+    width: 40px;
+    height: 40px;
+  }
+  
+  /* Ajustes para el footer */
+  .footer {
+    padding: 15px;
+    text-align: center;
+  }
+  
+  .footer_left p {
+    margin: 5px 0;
+  }
+}
+
+/* Ajustes específicos para móviles muy pequeños */
+@media (max-width: 480px) {
+  /* Ajuste de los contenedores principales */
+  .side_left, 
+  .content-box {
+    padding: 12px;
+  }
+  
+  /* Header más compacto */
+  .header {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  /* Alineación de los toggles */
+  .toggle-container {
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    margin: 5px 0;
+  }
+  
+  /* Mejorar el espaciado en los dropdowns */
+  .project-dropdown select,
+  .resource-dropdown select {
+    padding: 8px;
+    font-size: 0.85rem;
+  }
+  
+  /* Reducir el tamaño de los iconos en el footer */
+  .social-links-footer {
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  /* Ajustes para los contenedores de resumen */
+  .summary-container {
+    padding: 10px;
+    min-height: 80px;
+  }
+  
+  /* Ajuste de altura para la imagen */
+  .side_left img {
+    max-height: 200px;
+  }
+  
+  /* Reducir margen superior de la sección de tecnologías */
+  .technologies {
+    margin-top: 20px;
+    padding: 15px 10px;
+  }
+  
+  .technologies h2 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+  }
+}
+
+/* Ajustes para dispositivos muy pequeños */
+@media (max-width: 360px) {
+  /* Navbar más compacta */
+  .navbar {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  
+  .navbar a {
+    padding: 4px 8px;
+    font-size: 0.7rem;
+  }
+  
+  /* Reducir tamaño de iconos de tecnología */
+  .tech-icons img {
+    width: 35px;
+    height: 35px;
+  }
+  
+  /* Ajuste de padding para contenedores */
+  .row {
+    padding: 10px 5px;
+  }
+  
+  /* Reducir aún más el tamaño de fuente */
+  .content-box h2,
+  .side_left h2,
+  .technologies h2 {
+    font-size: 1.1rem;
+  }
+  
+  /* Ajustar tamaños de selects */
+  .project-dropdown select,
+  .resource-dropdown select {
+    font-size: 0.8rem;
   }
 }
