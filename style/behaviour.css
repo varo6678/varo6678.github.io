@@ -36,7 +36,7 @@ body.dark-mode .navbar a {
 }
 
 body.dark-mode .side_left,
-body.dark-mode .main,
+body.dark-mode .content-box,
 body.dark-mode .technologies {
   background-color: #2a2a2a;
   color: #f0f0f0;
@@ -55,6 +55,11 @@ body.dark-mode .project-dropdown select:focus,
 body.dark-mode .resource-dropdown select:hover,
 body.dark-mode .resource-dropdown select:focus {
   border-color: #E74C3C;
+}
+
+body.dark-mode .summary-container {
+  background-color: #333;
+  border-color: #555;
 }
 
 body.dark-mode .tech-icons img {
@@ -291,8 +296,9 @@ img {
   box-sizing: border-box;
 }
 
-.side_left,
-.main {
+.side_left {
+  flex: 1;
+  min-width: 300px;
   border-radius: 12px;
   padding: 25px;
   background-color: #fff;
@@ -300,14 +306,53 @@ img {
   transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.side_left {
-  flex: 1;
-  min-width: 300px;
-}
-
+/* NUEVA ESTRUCTURA PARA LA SECCIÓN PRINCIPAL */
 .main {
   flex: 2;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Estilos para las cajas de contenido (proyectos y recursos) */
+.content-box {
+  border-radius: 12px;
+  padding: 25px;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Asegúrate de que las cajas tengan la misma altura */
+.projects-box, .resources-box {
+  flex: 1;
+}
+
+/* Mantén consistencia en los títulos */
+.content-box h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.4rem;
+}
+
+/* Estilos para contenedores de resúmenes */
+.summary-container {
+  margin-top: 15px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+  flex-grow: 1;
+  min-height: 100px;
+  transition: all 0.3s ease;
+  overflow-y: auto;
+}
+
+.summary-container p {
+  margin: 0;
+  font-size: 0.9rem;
 }
 
 /* Content columns for projects and resources */
@@ -325,7 +370,7 @@ img {
 /* 🎨 Project and resource dropdown styling */
 .project-dropdown,
 .resource-dropdown {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .project-dropdown select,
@@ -459,7 +504,8 @@ img {
   }
 
   .side_left,
-  .main {
+  .main,
+  .content-box {
     width: 100%;
   }
 

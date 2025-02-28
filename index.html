@@ -1,89 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
-    <title>Álvaro Monforte Marín | Physicist & Data Scientist</title>
     <meta charset="UTF-8">
-    <meta name="description" content="Portfolio of Álvaro Monforte Marín, Physicist and Data Scientist specializing in Machine Learning and Materials Science.">
+    <meta name="description" content="Álvaro Monforte Marín | Physicist | Data Scientist | Machine Learning Engineer">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./stylesheets/segunda_estilo.css" />
+    
+    <title>Álvaro Monforte Marín | Physicist & Data Scientist</title>
+
+    <link rel="stylesheet" href="./style/behaviour.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <script>
-        // Redirect when selecting a project option
-        function redirectToProject(select) {
-            const url = select.value;
-            if (url) {
-                window.open(url, '_blank');
-            }
-        }
-
-        // Redirect when selecting a resource option
-        function redirectToResource(select) {
-            const url = select.value;
-            if (url) {
-                window.open(url, '_blank');
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            // Language switcher functionality
-            const languageToggle = document.getElementById('language-toggle');
-            const englishElements = document.querySelectorAll('.en');
-            const spanishElements = document.querySelectorAll('.es');
-            
-            // Set default language
-            let currentLang = 'en';
-            showLanguage(currentLang);
-            
-            // Handle language switch
-            languageToggle.addEventListener('change', function() {
-                currentLang = this.checked ? 'es' : 'en';
-                showLanguage(currentLang);
-                // Store preference in localStorage
-                localStorage.setItem('preferredLanguage', currentLang);
-            });
-            
-            // Load saved language preference
-            const savedLang = localStorage.getItem('preferredLanguage');
-            if (savedLang) {
-                currentLang = savedLang;
-                languageToggle.checked = (currentLang === 'es');
-                showLanguage(currentLang);
-            }
-            
-            function showLanguage(lang) {
-                if (lang === 'en') {
-                    englishElements.forEach(el => el.style.display = 'block');
-                    spanishElements.forEach(el => el.style.display = 'none');
-                } else {
-                    englishElements.forEach(el => el.style.display = 'none');
-                    spanishElements.forEach(el => el.style.display = 'block');
-                }
-            }
-
-            // Dark mode functionality
-            const darkModeToggle = document.getElementById('dark-mode-toggle');
-            const body = document.body;
-            
-            // Handle dark mode switch
-            darkModeToggle.addEventListener('change', function() {
-                if (this.checked) {
-                    body.classList.add('dark-mode');
-                    localStorage.setItem('darkMode', 'enabled');
-                } else {
-                    body.classList.remove('dark-mode');
-                    localStorage.setItem('darkMode', 'disabled');
-                }
-            });
-            
-            // Load saved dark mode preference
-            const savedDarkMode = localStorage.getItem('darkMode');
-            if (savedDarkMode === 'enabled') {
-                body.classList.add('dark-mode');
-                darkModeToggle.checked = true;
-            }
-        });
-    </script>
+    <script src="./scripts/back.js"></script>
 </head>
 
 <body>
@@ -99,7 +25,7 @@
                     <span class="en">Home</span>
                     <span class="es">Inicio</span>
                 </a>
-                <a href="./monfortemarinalvaro_cv_120623.pdf" target="_blank" rel="noopener">CV</a>
+                <a href="./docs/monfortemarinalvaro_cv_120623.pdf" target="_blank" rel="noopener">CV</a>
                 <a href="#projects">
                     <span class="en">Projects</span>
                     <span class="es">Proyectos</span>
@@ -159,10 +85,10 @@
                     - BSc in Physics, Universidad de La Laguna (ULL)<br>
                     - MSc in Data Science, Universitat Oberta de Catalunya (UOC), 2023<br><br>
                     <strong>Skills:</strong><br>
-                    - Python (TensorFlow, Pandas, NumPy)<br>
-                    - Machine Learning & Graph Neural Networks<br>
+                    - Python (TensorFlow, Pytorch, JAX)<br>
+                    - Machine Learning & Deep Neural Networks<br>
                     - Computational Physics (DFT, VASP)<br><br>
-                    Currently exploring advanced ML applications and material discovery.
+                    Currently exploring advanced ML/DL applications and LLMs.
                 </p>
             </div>
             
@@ -174,41 +100,50 @@
                     - Grado en Física, Universidad de La Laguna (ULL)<br>
                     - Máster en Ciencia de Datos, Universitat Oberta de Catalunya (UOC), 2023<br><br>
                     <strong>Habilidades:</strong><br>
-                    - Python (TensorFlow, Pandas, NumPy)<br>
-                    - Aprendizaje Automático y Redes Neuronales de Grafos<br>
+                    - Python (TensorFlow, Pytorch, JAX)<br>
+                    - Aprendizaje Automático y Redes Neuronales<br>
                     - Física Computacional (DFT, VASP)<br><br>
                     Actualmente explorando aplicaciones avanzadas de ML y descubrimiento de materiales.
                 </p>
             </div>
         </section>
 
-        <section class="main" id="projects">
-            <h2>
-                <span class="en">Projects</span>
-                <span class="es">Proyectos</span>
-            </h2>
-            <div class="project-dropdown">
-                <select onchange="redirectToProject(this)">
-                    <option value="" class="en">Select a Project</option>
-                    <option value="" class="es">Selecciona un Proyecto</option>
-                    <option value="https://varo6678.github.io/chatbot">Chatbot</option>
-                    <option value="https://varo6678.github.io/predicting-tourism">
-                        <span class="en">Predicting Tourism</span>
-                        <span class="es">Predicción de Turismo</span>
-                    </option>
-                    <option value="https://varo6678.github.io/ts-applied-to-retail">
-                        <span class="en">TS Applied to Retail</span>
-                        <span class="es">Series Temporales Aplicadas al Comercio</span>
-                    </option>
-                    <option value="https://varo6678.github.io/predicting-molecular-properties">
-                        <span class="en">Predicting Molecular Properties with Graph Neural Networks</span>
-                        <span class="es">Predicción de Propiedades Moleculares con Redes Neuronales de Grafos</span>
-                    </option>
-                    <option value="https://varo6678.github.io/theoretical-study-dft">
-                        <span class="en">Theoretical Study of Materials with DFT</span>
-                        <span class="es">Estudio Teórico de Materiales con DFT</span>
-                    </option>
-                </select>
+        <section class="main">
+            <div class="content-box projects-box" id="projects">
+                <h2>
+                    <span class="en">Projects</span>
+                    <span class="es">Proyectos</span>
+                </h2>
+                <div class="project-dropdown">
+                    <select id="project-select" onchange="handleProjectChange(this.value)">
+                        <option value="">Select a Project</option>
+                        <option value="chatbot">Chatbot</option>
+                        <option value="predicting-tourism">Predicting Tourism</option>
+                        <option value="ts-applied-to-retail">TS Applied to Retail</option>
+                        <option value="predicting-molecular-properties">Predicting Molecular Properties with GNN</option>
+                        <option value="theoretical-study-dft">Theoretical Study of Materials with DFT</option>
+                    </select>
+                </div>
+                <div class="summary-container" id="project-summary">
+                    <p class="en">Select a project to see its description.</p>
+                    <p class="es">Selecciona un proyecto para ver su descripción.</p>
+                </div>
+            </div>
+            
+            <div class="content-box resources-box" id="resources">
+                <h2>
+                    <span class="en">Resources</span>
+                    <span class="es">Recursos</span>
+                </h2>
+                <div class="resource-dropdown">
+                    <select id="resource-select" onchange="handleResourceChange(this.value)">
+                        <option value="">Select a Project First</option>
+                    </select>
+                </div>
+                <div class="summary-container" id="resource-summary">
+                    <p class="en">Select a resource to see its description.</p>
+                    <p class="es">Selecciona un recurso para ver su descripción.</p>
+                </div>
             </div>
         </section>
 
